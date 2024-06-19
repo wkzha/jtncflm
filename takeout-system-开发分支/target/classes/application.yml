@@ -1,0 +1,47 @@
+server:
+  port: 9010
+
+spring:
+  application:
+    name: ccTakeOut
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/ruiji?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: root
+      password: 123456
+
+  redis:
+    host: localhost # 本地IP 或是 虚拟机IP
+    port: 6379
+    #    password: root
+    database: 0  # 默认使用 0号db
+  cache:
+    redis:
+      time-to-live: 1800000  # 设置缓存数据的过期时间，30分钟
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，开启按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+
+#自定义的文件上传存储位置
+takeOutFile:
+  fileLocaltion: E:\wm\
+
+  # 验证码图片设置
+  captcha:
+    image:
+      width: 66
+      height: 22
+
+alipay:
+  appId: 9021000138626607
+  appPrivateKey: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCpWAw5MisS8U83+IXn5T/zs1LXmapbqOiCs+2m7JwVu7wPfiiUPbKzt4Vj6OXHR7dy+GnHYn0qYsq+/R17KkBr/ScLm7xixIyKAMQCX6O3HHc8qABg7v7wLDtKyt8vDiLlZ1gNmbXVd+U3poG67/caXM34iOFENrxsUyVGzWtenYb8nDnGvbaK1IA3kIqPcpEuj2GrV96LWNIXpWxmRbV+Sozl58xzRgIt8BS4myn6hiEkh5pMI4X63Hlbb+Om9t0KJbgeZA3/GTH+EfRVHGrqaRgGP2fZulUEM1pHAKnQpdqIQxNAQ9M5KHbiH8uqf8o+Cb3kg2e/H4oyaaKNAmBlAgMBAAECggEAcwY2T0dPUK+N0oPBWLEzzjF4zK84sse5HsZeXyqKHo0FATT9FSwPTNkUBrf0E3cYGUS4fNDeGcM+2ZmNw9IALhmmwtDGlgPRPg+lE8OorUDtkMrAbxcHHVW99GB2Vjzw4QdgHOTSSKwGitVTewlxu3tcADvhXvca5y1WvY/cJUgZojJBZfhVoZW5TAu6XRlC4o+oQKWvJL0hVhsbm9SFTDXt4sbTr0d0jn20uYa1hWnHiojKrdVBv092/zMbYbJnZiGbW04ZSzij/An4K+tVLfUpCjMNSxG/pyVRfeWGVKKofwhsvpktFUCt4L1ZTKU2Zq3r0xHSnKvyFKXHm5lJ4QKBgQDWwSUHR3ENZh86nBZX3yceq5DVuYx0MXrcfdR78MIYVkR2YnL4xl1seJPDCruVJFspiQYmUA/xeo+dV2dgJ6Pb1MdkSBbcuQgSN/Onw9f3YkR5AKYX40k5UpxfguYbAgXdjGJgbL5Zks8O2a8B7AxCnmjsgfCVQEYPhJDGZNZ+DQKBgQDJ3jLZubxPdvvXbX+9TwJn1VaB3gMP4y3SP7b4UiJO9SINyob6zcG3MjF5TSWgcO78Y+7fp5XGxaMjUp5JNqJsdwJFP2bd3fKgRe/960/GMXJciLNxBJmovvR3wRQk8bYJSuOvPNH+Czt9VmjaBNm6bWdr2/cFgL0FA0taQ/0tuQKBgEwpD0K3mWZREz4r4Nik8TC1U5YYSbFjYtkTXundhlgvL/R0EaYcY0F2uaBwC/pmfFYMnDu2JRFUj94TAzxckoYBvfzYfBMnI6+iXCzhDZRUK0hmbIEIQA2uOHq+53AolX/uq2za497Ma9YuaRxbZDW0DC3kHzgvJSmXr+hMFq15AoGANNzVICL9ZynXZWCtVNu924cIclW7I4vwUeCRf5Gynk6fLlFc64y6L8kbH5LOSaeJTdq1kSgHltfmkrdt7+o4uoKnu46Q14TppoLqB+p5J4OHWSgLJYt42bG3vyx2o/4QF3rfCOK6cvZqC7Z3GrCue51uudYOaAiAdzGXp/mp8TECgYATTjQQ4iNz1PZQs0ZwgeNlfnb2K06wqwVKsOldG4Hk6gacyJnPnr/xEesG/iF0+1a0d/df/Svq1KG+Mz0eFTIr591492inQ45HiVGmo8PiFRDeGrQw3vSSt5WbxQDotgT0afi85BhV+TWdeW0LtLT+O2lIZI9gt/8QvYXuses7jg==
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzOAXUEEXZGQV3AeXgyDE1HJlm6d/eMMkWkSi/y/U0+lPAbwDP5UYrWWytfufT5nYGhopauV47qxfRgi5kvqYULjyU2SFyiKwBfTK3pDnKbqLp/fgL9yND7XYiORkvF1dMmUVYJQK4y6hSPS/cKZJ42JT7QJo/g5zWJWiZoIjGWFCCH/PYRekTLjke+uIQgF2YyTpPwmTR3HzjQVdXSF7rQTMt/3o0vwfSWIToTarkzWpoZRChlfR3WnYROoltS7HYB120hN2Hnl6Fpioptimph8rpDs1utnyvn7/+U4pM3bipW8QiRhyfmBCsoLSansMv+ordz4FYcqnK5O2NSZP0QIDAQAB
+  notifyUrl: http://n8fjqz.natappfree.cc/alipay/notify
+  returnUrl: http://127.0.0.1:9010/front/page/pay-success.html
